@@ -19,11 +19,17 @@ const app = document.getElementById("app");
 
 // here we are going to create a component called header.
 
-function Header() {
+// also here we are recieving props/arguments
+function Header(props) {
 
     // A component is a function that returns UI elements. Inside the
     // return statement of the function, you can write JSX:
-    return (<h1>This is the custom react component build by Muhammed Basheer</h1>)
+    return (
+        <h1>
+            {/* see the curly brace syntax to use variables inside jsx. */}
+            This is the custom react component build by Muhammed Basheer.   {props.title}
+        </h1>
+    )
 }
 
 // First, React components should be capitalized to distinguish them from
@@ -42,10 +48,18 @@ function HomePage() {
         {/* Nesting the Header component */
             (<h1>From parent.</h1>)
         }
-        <Header />
+
+        {
+            /* we can pass data as arguments / props to a component.
+               see the following title variable, we are passing it to
+               Header component. Header is a child component inside
+               HomePage component.
+            */
+        }
+        <Header title="This is passed as argument." />
       </div>
     );
 }
 
-ReactDOM.render(<HomePage/>, app);
+ReactDOM.render(<HomePage />, app);
 
